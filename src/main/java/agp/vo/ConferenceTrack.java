@@ -32,8 +32,7 @@ public final class ConferenceTrack extends EventSequence<ConferenceTrack.Schedul
   }
 
   public Set<Talk> talks() {
-    return Stream.of(this.events())
-      .flatMap(Collection::stream)
+    return this.stream()
       .map(ScheduledEvent::delegate)
       .filter(Talk.class::isInstance)
       .map(Talk.class::cast)
